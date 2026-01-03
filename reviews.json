@@ -1,0 +1,23 @@
+[
+    {
+        "username": "Customer_One",
+        "avatar_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "content": "Super fast delivery! Got my boost within seconds. 10/10 recommend.",
+        "rating": 5,
+        "date": "Oct 24, 2025"
+    },
+    {
+        "username": "ViperMain",
+        "avatar_url": "https://cdn.discordapp.com/embed/avatars/1.png",
+        "content": "Legit service. The tools are undetected and work exactly as described.",
+        "rating": 5,
+        "date": "Oct 22, 2025"
+    },
+    {
+        "username": "Slayer",
+        "avatar_url": "https://cdn.discordapp.com/embed/avatars/2.png",
+        "content": "Support helped me set everything up. Very patient. Will buy again.",
+        "rating": 5,
+        "date": "Oct 20, 2025"
+    }
+]
