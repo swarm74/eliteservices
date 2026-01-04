@@ -3,121 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Services | Catalog</title>
-    <link rel="stylesheet" href="style.css">
+    <title>EliteServices | Products</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div id="particles-js"></div>
+
     <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="logo">Elite <span class="highlight">Services</span></a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="products.html" class="nav-link active">Products</a></li>
-                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
-                <li><a href="index.html#features" class="nav-link">Features</a></li>
-                <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
-            </ul>
-            <a href="#" class="btn btn-primary">Get Started</a>
-        </div>
+        <div class="logo">ELITE<span>SERVICES</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#" class="active" style="color: var(--primary);">Products</a></li>
+            <li><a href="index.html#features">Why Us</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+        <a href="#" class="nav-btn">Client Area</a>
     </nav>
 
-    <section class="compact-hero">
-        <div class="container">
-            <h1>Service <span class="highlight">Catalog</span></h1>
-            <p>Browse our premium selection below.</p>
-        </div>
-    </section>
+    <div class="product-wrapper">
+        
+        <aside class="sidebar">
+            
+            <div class="category-header" style="margin-top: 0;">Marketplace</div>
 
-    <div class="container">
-        <div class="category-tabs">
-            <button class="tab-btn active" data-target="boosts">Server Boosts</button>
-            <button class="tab-btn" data-target="tokens">Tokens</button>
-            <button class="tab-btn" data-target="tools">Tools</button>
-        </div>
+            <div class="menu-item" onclick="toggleMenu('boost-sub', this)">
+                <span><i class="fas fa-bolt" style="width:20px; color:var(--primary)"></i> Server Boost</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </div>
+            <div class="submenu" id="boost-sub">
+                <div class="sub-link active" onclick="filterProducts('boost-1m', this)">1 Month Boosts</div>
+                <div class="sub-link" onclick="filterProducts('boost-3m', this)">3 Month Boosts</div>
+            </div>
+
+            <div class="menu-item" onclick="toggleMenu('tools-sub', this)">
+                <span><i class="fas fa-microchip" style="width:20px; color:var(--primary)"></i> Tools</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </div>
+            <div class="submenu" id="tools-sub">
+                <div class="sub-link" onclick="filterProducts('tool-boost', this)">Boost Tool</div>
+                <div class="sub-link" onclick="filterProducts('tool-rotator', this)">Status Rotator</div>
+                <div class="sub-link" onclick="filterProducts('tool-pass', this)">Password Changer</div>
+                <div class="sub-link" onclick="filterProducts('tool-promo', this)">Promo Checker</div>
+                <div class="sub-link" onclick="filterProducts('tool-token', this)">Token Checker</div>
+                <div class="sub-link" onclick="filterProducts('tool-cloner', this)">Server Cloner</div>
+                <div class="sub-link" onclick="filterProducts('tool-autopurchase', this)">Auto Purchase</div>
+                <div class="sub-link" onclick="filterProducts('tool-boostbot', this)">Boost Bot</div>
+                <div class="sub-link" onclick="filterProducts('tool-sellauth', this)">SellAuth AIO</div>
+                <div class="sub-link" onclick="filterProducts('tool-queue', this)">Queue Bot</div>
+                <div class="sub-link" onclick="filterProducts('tool-keyauth', this)">KeyAuth AIO</div>
+            </div>
+
+            <div class="menu-item" onclick="toggleMenu('tokens-sub', this)">
+                <span><i class="fas fa-fingerprint" style="width:20px; color:var(--primary)"></i> Tokens</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </div>
+            <div class="submenu" id="tokens-sub">
+                <div class="sub-link" onclick="filterProducts('token-1m', this)">1 Month Tokens</div>
+                <div class="sub-link" onclick="filterProducts('token-3m', this)">3 Month Tokens</div>
+            </div>
+        </aside>
+
+        <main class="product-grid">
+            
+            <div class="card p-item" data-cat="boost-1m" data-aos="fade-up">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <span class="stock-badge">In Stock</span>
+                <h3>6x Server Boost [1 Month]</h3>
+                <p class="price">$2.50</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+
+            <div class="card p-item" data-cat="boost-1m" data-aos="fade-up">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <span class="stock-badge">In Stock</span>
+                <h3>8x Server Boost [1 Month]</h3>
+                <p class="price">$2.50</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+
+             <div class="card p-item" data-cat="boost-1m" data-aos="fade-up">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <span class="stock-badge">In Stock</span>
+                <h3>14x Server Boost [1 Month]</h3>
+                <p class="price">$5.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+
+            <div class="card p-item hidden" data-cat="boost-3m">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <span class="stock-badge">In Stock</span>
+                <h3>6x Server Boost [3 Month]</h3>
+                <p class="price">$12.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+            <div class="card p-item hidden" data-cat="boost-3m">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <span class="stock-badge">In Stock</span>
+                <h3>8x Server Boost [3 Month]</h3>
+                <p class="price">$12.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+            <div class="card p-item hidden" data-cat="boost-3m">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <span class="stock-badge">In Stock</span>
+                <h3>14x Server Boost [3 Month]</h3>
+                <p class="price">$12.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+
+            <div class="card p-item hidden" data-cat="tool-boost">
+                <div class="icon-box"><i class="fas fa-wrench"></i></div>
+                <span class="stock-badge">Instant</span>
+                <h3>Boost Tool [Week]</h3>
+                <p class="price">$30.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+
+            <div class="card p-item hidden" data-cat="tool-boost">
+                <div class="icon-box"><i class="fas fa-wrench"></i></div>
+                <span class="stock-badge">Instant</span>
+                <h3>Boost Tool [Month]</h3>
+                <p class="price">$30.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>            
+
+            <div class="card p-item hidden" data-cat="tool-boost">
+                <div class="icon-box"><i class="fas fa-wrench"></i></div>
+                <span class="stock-badge">Instant</span>
+                <h3>Boost Tool [Lifetime]</h3>
+                <p class="price">$30.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+
+            <div class="card p-item hidden" data-cat="token-1m">
+                <div class="icon-box"><i class="fas fa-key"></i></div>
+                <span class="stock-badge">Verified</span>
+                <h3>Nitro Token [1 Month]</h3>
+                <p class="price">$4.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+
+            <div class="card p-item hidden" data-cat="token-3m">
+                <div class="icon-box"><i class="fas fa-key"></i></div>
+                <span class="stock-badge">Verified</span>
+                <h3>Nitro Token [3 Month]</h3>
+                <p class="price">$4.00</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;">Purchase</a>
+            </div>
+    
+        </main>
     </div>
 
-    <section class="products-area">
-        <div class="container">
-            
-            <div id="boosts" class="product-group active-group">
-                <div class="compact-grid">
-                    <div class="product-card highlight-card">
-                        <div class="badge">Best Value</div>
-                        <h3>14x Server Boosts</h3>
-                        <div class="price"><span class="currency">$</span>14.99<span class="period">/mo</span></div>
-                        <p class="sub-text">Level 3 Instant Boost for your server.</p>
-                        <div class="features-row">
-                            <span><i class="fa-solid fa-check"></i> Instant Delivery</span>
-                            <span><i class="fa-solid fa-check"></i> 3 Month Duration</span>
-                            <span><i class="fa-solid fa-check"></i> Full Warranty</span>
-                        </div>
-                        <button class="btn btn-primary btn-full">Purchase</button>
-                    </div>
-                    <div class="product-card">
-                        <h3>2x Server Boosts</h3>
-                        <div class="price"><span class="currency">$</span>3.99<span class="period">/mo</span></div>
-                        <p class="sub-text">Perfect for unlocking Level 1 perks.</p>
-                        <div class="features-row">
-                            <span><i class="fa-solid fa-check"></i> Instant Delivery</span>
-                            <span><i class="fa-solid fa-check"></i> 1 Month Duration</span>
-                            <span><i class="fa-solid fa-check"></i> Warranty Included</span>
-                        </div>
-                        <button class="btn btn-primary btn-full">Purchase</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tokens" class="product-group">
-                <div class="compact-grid">
-                    <div class="product-card">
-                        <h3>Fully Verified</h3>
-                        <div class="price"><span class="currency">$</span>0.50<span class="period">/ea</span></div>
-                        <p class="sub-text">High quality phone verified tokens.</p>
-                        <div class="features-row">
-                            <span><i class="fa-solid fa-check"></i> Phone Verified</span>
-                            <span><i class="fa-solid fa-check"></i> Real Avatars</span>
-                            <span><i class="fa-solid fa-check"></i> Aged 30+ Days</span>
-                        </div>
-                        <button class="btn btn-primary btn-full">Purchase</button>
-                    </div>
-                    
-                    <div class="product-card">
-                        <h3>Email Verified</h3>
-                        <div class="price"><span class="currency">$</span>0.10<span class="period">/ea</span></div>
-                        <p class="sub-text">Great for mass DMing or raiding.</p>
-                        <div class="features-row">
-                            <span><i class="fa-solid fa-check"></i> Email Verified</span>
-                            <span><i class="fa-solid fa-check"></i> Realistic Names</span>
-                            <span><i class="fa-solid fa-check"></i> Mixed IPs</span>
-                        </div>
-                        <button class="btn btn-primary btn-full">Purchase</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tools" class="product-group">
-                <div class="compact-grid">
-                    <div class="product-card highlight-card">
-                        <div class="badge">New</div>
-                        <h3>Multi-Tool V2</h3>
-                        <div class="price"><span class="currency">$</span>49.99<span class="period">/life</span></div>
-                        <p class="sub-text">The ultimate management tool.</p>
-                        <div class="features-row">
-                            <span><i class="fa-solid fa-check"></i> Token Joiner</span>
-                            <span><i class="fa-solid fa-check"></i> Mass DM</span>
-                            <span><i class="fa-solid fa-check"></i> 24/7 Support</span>
-                        </div>
-                        <button class="btn btn-primary btn-full">Purchase</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
