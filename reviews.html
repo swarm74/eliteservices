@@ -3,62 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Services | Vouchers</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Elite Services | Customer Reviews</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- Reviews Page Specific Styles --- */
+        .reviews-wrapper {
+            padding: 120px 10% 40px 10%;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .loading-text {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 50px;
+        }
+
+        /* Review Grid */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        /* Review Card Styling */
+        .review-card {
+            background: rgba(5, 5, 7, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 164, 147, 0.1);
+        }
+
+        /* Header (Avatar + Name) */
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 15px;
+            margin-bottom: 5px;
+        }
+
+        .review-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--glass-border);
+        }
+
+        .review-info h4 {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 0.9rem;
+        }
+
+        .review-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d1d5db;
+            font-style: italic;
+            flex: 1; /* Pushes badge to bottom */
+        }
+
+        .verified-badge {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+    </style>
 </head>
 <body>
 
+    <div id="particles-js"></div>
+
     <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="logo">Elite <span class="highlight">Services</span></a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="products.html" class="nav-link">Products</a></li>
-                <li><a href="reviews.html" class="nav-link active">Reviews</a></li>
-                <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
-            </ul>
-            <a href="products.html" class="btn btn-primary nav-btn">Get Started</a>
-        </div>
+        <div class="logo">ELITE<span>SERVICES</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="#" class="active" style="color: var(--primary);">Reviews</a></li>
+            <li><a href="index.html#features">Why Us</a></li>
+            <li><a href="https://discord.gg/nzcSK2TX7C" target="_blank">Support</a></li>
+        </ul>
+        <a href="products.html" class="nav-btn">Get Started</a>
     </nav>
 
-    <section class="compact-hero">
-        <div class="container">
-            <h1>Client <span class="highlight">Vouchers</span></h1>
-            <p>Real feedback from our community.</p>
+    <div class="reviews-wrapper">
+        <div class="section-title" data-aos="fade-down">
+            <h2>Trusted by <span class="text-gradient">Clients</span></h2>
+            <p style="color: var(--text-muted);">Real feedback from our verified customers.</p>
         </div>
-    </section>
 
-    <section class="products-area">
-        <div class="container">
-            <div class="compact-grid" id="reviews-container">
-                <p style="color: #888;">Loading reviews...</p>
-            </div>
+        <div id="reviews-container" class="reviews-grid">
+            <div class="loading-text">Loading reviews...</div>
         </div>
-    </section>
+    </div>
 
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-col">
-                <a href="index.html" class="logo">Elite <span class="highlight">Services</span></a>
-                <p>Top-tier digital services.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-discord"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="container copyright"><p>&copy; 2026 Elite Services.</p></div>
+    <footer>
+        <p>&copy; 2026 Elite Services. All rights reserved.</p>
     </footer>
 
-    <script src="reviews.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // --- CONFIGURATION ---
+        const BIN_ID = '6959776aae596e708fc2d912'; // <--- PASTE YOUR BIN ID HERE
+        
+        // Use your URL format
+        const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('reviews-container');
+
+            fetch(BIN_URL)
+                .then(res => res.json())
+                .then(data => {
+                    // JSONBin stores the array inside "record"
+                    const reviews = data.record; 
+                    
+                    container.innerHTML = ''; // Clear loading text
+
+                    if (!reviews || reviews.length === 0) {
+                        container.innerHTML = '<p style="color:white; text-align:center;">No reviews yet.</p>';
+                        return;
+                    }
+
+                    // Loop through reviews using YOUR fields
+                    reviews.forEach((review, index) => {
+                        const card = document.createElement('div');
+                        card.classList.add('review-card');
+                        
+                        // Add animation delay for cool effect
+                        card.setAttribute('data-aos', 'fade-up');
+                        card.setAttribute('data-aos-delay', index * 100);
+
+                        // 1. Stars Logic (converts number to FontAwesome icons)
+                        const rating = review.rating || 5;
+                        const starsHtml = generateStars(rating);
+
+                        // 2. Avatar Logic (Use yours or fallback)
+                        const avatar = review.avatar_url || 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+                        // 3. Content Logic (Using 'review.content' as confirmed)
+                        const content = review.content || "No comment provided.";
+                        
+                        // 4. Date Logic
+                        const date = review.date || 'Recent';
+
+                        card.innerHTML = `
+                            <div class="review-header">
+                                <img src="${avatar}" class="review-avatar">
+                                <div class="review-info">
+                                    <h4>${review.username}</h4>
+                                    <span class="review-date">${date}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stars" style="margin-bottom:10px;">
+                                ${starsHtml}
+                            </div>
+                            
+                            <p class="review-content">"${content}"</p>
+                            
+                            <div class="verified-badge">
+                                <i class="fa-solid fa-check-circle"></i> Verified Customer
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    container.innerHTML = '<p style="color:red; text-align:center;">Error loading reviews. Check console/Bin ID.</p>';
+                });
+        });
+
+        // Helper function to draw stars
+        function generateStars(rating) {
+            let starsHtml = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < rating) {
+                    starsHtml += '<i class="fa-solid fa-star"></i> ';
+                } else {
+                    starsHtml += '<i class="fa-regular fa-star" style="opacity: 0.3;"></i> ';
+                }
+            }
+            return starsHtml;
+        }
+    </script>
 </body>
 </html>
