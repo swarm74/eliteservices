@@ -136,3 +136,19 @@ window.onload = function() {
         toggleMenu('boost-sub', document.querySelector('.menu-item'));
     }
 };
+
+/* ========================================= */
+/* MOBILE FUNCTIONS (ADDED THIS)             */
+/* ========================================= */
+
+// Toggle Product Sidebar (Filters)
+function toggleSidebar() {
+    const sidebar = document.getElementById('productSidebar');
+    sidebar.classList.toggle('active');
+}
+
+// Toggle Main Navigation Menu
+function toggleNav() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('active');
+}
