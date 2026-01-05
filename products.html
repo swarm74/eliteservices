@@ -21,12 +21,28 @@
             <li><a href="index.html#features">Why Us</a></li>
             <li><a href="#">Support</a></li>
         </ul>
+        
+        <i class="fas fa-bars mobile-nav-toggle" onclick="toggleNav()"></i>
+        
         <a href="#" class="nav-btn">Client Area</a>
     </nav>
 
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <i class="fas fa-times close-nav" onclick="toggleNav()"></i>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="index.html#features">Why Us</a>
+        <a href="#">Support</a>
+    </div>
+
     <div class="product-wrapper">
         
-        <aside class="sidebar">
+        <aside class="sidebar" id="productSidebar">
+            
+            <div class="sidebar-header-mobile">
+                <span>Filters</span>
+                <i class="fas fa-times close-sidebar" onclick="toggleSidebar()"></i>
+            </div>
             
             <div class="category-header" style="margin-top: 0;">Marketplace</div>
 
@@ -68,6 +84,10 @@
         </aside>
 
         <main class="product-grid">
+            
+            <button class="mobile-filter-btn" onclick="toggleSidebar()">
+                <i class="fas fa-filter"></i> Categories
+            </button>
             
             <div class="card p-item" data-cat="boost-1m" data-aos="fade-up">
                 <div class="icon-box"><i class="fas fa-rocket"></i></div>
